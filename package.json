@@ -1,7 +1,7 @@
 {
   "name": "feedme.abird.ca",
   "version": "1.0.0",
-  "description": "A clock for new moms -- counts up to three hours, beeps, and can be started again.",
+  "description": "A clock for new parents -- counts up to three hours, beeps, and can be started again.",
   "main": "html/index.html",
   "dependencies": {
     "ncp": "^2.0.0"
