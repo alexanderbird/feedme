@@ -25,3 +25,11 @@ It's a static html site -- do with it what you will. feedme.abird.ca uses an AWS
 - Font: https://www.dafont.com/alarm-clock.font
 - Sound: http://soundbible.com/1531-Temple-Bell.html
 - Timing library: http://countdownjs.org/
+
+# Dev notes
+## SVG
+If you want to inline an svg, use svgo to optimize it first, you don't need the cruft in there
+
+    npx svgo raw.svg -o smaller.svg
+
+
