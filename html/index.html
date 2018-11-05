@@ -16,6 +16,11 @@
         display: flex;
         font-size: 38vw;
       }
+  
+      span.hide {
+        opacity: 0;
+      }
+
     </style>
   </head>
   <body>
@@ -24,5 +29,20 @@
       <span id='divider'>:</span>
       <span id='minutes'>00</span>
     </div>
+    <script src='./countdown.min.js'></script>
+    <script>
+      const lpad = number => ('00' + number.toString()).slice(-2)
+      const hours = document.getElementById('hours')
+      const divider = document.getElementById('divider')
+      const minutes = document.getElementById('minutes')
+      const start = new Date(Date.now())
+      setInterval(() => {
+        const clock = countdown(start)
+        hours.textContent = lpad(clock.hours)
+        minutes.textContent = lpad(clock.minutes)
+        const flash = (clock.value % 1000) > 500
+        divider.classList.toggle('hide', !flash)
+      }, 60)
+    </script>
   </body>
 </html>
