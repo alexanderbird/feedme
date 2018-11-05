@@ -8,8 +8,11 @@
       }
       body {
         font-family: alarm-clock;
-        color: yellow;
+        color: #278692;
         background: black;
+        /* so you can scroll to hide the address bar on mobile */
+        height: 120vh;
+        margin-top: 20vh;
       }
 
       #clock {
@@ -29,19 +32,30 @@
       <span id='divider'>:</span>
       <span id='minutes'>00</span>
     </div>
+    <audio id='gong' src='gong.mp3'/>
     <script src='./countdown.min.js'></script>
     <script>
+      const feedingIntervalHours = 3
+      const gongRepeats = 5
+
       const lpad = number => ('00' + number.toString()).slice(-2)
       const hours = document.getElementById('hours')
       const divider = document.getElementById('divider')
       const minutes = document.getElementById('minutes')
       const start = new Date(Date.now())
+      const gong = document.getElementById('gong')
+      const gongIsPlaying = () => gong.duration > 0 && !gong.paused
+      let shutUp = false;
+      document.body.addEventListener('click', () => { shutUp = true })
       setInterval(() => {
         const clock = countdown(start)
         hours.textContent = lpad(clock.hours)
         minutes.textContent = lpad(clock.minutes)
         const flash = (clock.value % 1000) > 500
         divider.classList.toggle('hide', !flash)
+        if(!shutUp && !gongIsPlaying() && clock.hours >= feedingIntervalHours) {
+          gong.play()
+        }
       }, 60)
     </script>
   </body>
