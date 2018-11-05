@@ -13,7 +13,7 @@
     "start": "cd html && http-server",
     "deploy": "node ./bin/deploy.js"
   },
-  "license": "MIT",
+  "license": "GPL-3.0",
   "deploy": {
     "region": "ca-central-1",
     "bucket": "feedme.abird.ca"
